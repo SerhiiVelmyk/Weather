@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "id",
+    "meetingTime",
+    "recordDate",
+    "deadlineTime",
+    "issuer",
+    "validFrom",
+    "validUntil",
+    "votingOptions",
+    "type",
+    "status",
+    "meetingIsin",
+    "reviewDate",
+    "meetingFileUrl",
+    "publishedTime",
+    "withdrawnTime"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "title": "The Id Schema",
+      "uniqueItems": true
+    },
+    "meetingTime": {
+      "type": "string",
+      "title": "The Meetingtime Schema"
+    },
+    "recordDate": {
+      "type": "string",
+      "title": "The Recorddate Schema"
+    },
+    "deadlineTime": {
+      "type": "string",
+      "title": "The Deadlinetime Schema"
+    },
+    "issuer": {
+      "type": "object",
+      "title": "The Issuer Schema",
+      "required": [
+        "id",
+        "name",
+        "isins"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "title": "The Id Schema"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isins": {
+          "type": "array",
+          "title": "The Isins Schema",
+          "items": {
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "id",
+              "isin"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "title": "The Id Schema"
+              },
+              "isin": {
+                "type": "string",
+                "title": "The Isin Schema",
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "validFrom": {
+      "type": "string",
+      "title": "The Validfrom Schema"
+    },
+    "validUntil": {
+      "type": "null",
+      "title": "The Validuntil Schema",
+      "default": null
+    },
+    "votingOptions": {
+      "type": "object",
+      "title": "The Votingoptions Schema",
+      "required": [
+        "voteFor",
+        "voteAgainst",
+        "abstain",
+        "proxy",
+        "noAction",
+        "split"
+      ],
+      "properties": {
+        "voteFor": {
+          "type": "boolean",
+          "title": "The Votefor Schema",
+          "default": false
+        },
+        "voteAgainst": {
+          "type": "boolean",
+          "title": "The Voteagainst Schema",
+          "default": false
+        },
+        "abstain": {
+          "type": "boolean",
+          "title": "The Abstain Schema",
+          "default": false
+        },
+        "proxy": {
+          "type": "boolean",
+          "title": "The Proxy Schema",
+          "default": false
+        },
+        "noAction": {
+          "type": "boolean",
+          "title": "The Noaction Schema",
+          "default": false
+        },
+        "split": {
+          "type": "boolean",
+          "title": "The Split Schema",
+          "default": false
+        }
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "EGM",
+        "AGM",
+        "OGM",
+        "CRT",
+        "OTH"
+      ],
+      "status": {
+        "type": "string",
+        "title": "The Status Schema"
+      },
+      "meetingIsin": {
+        "type": "array",
+        "title": "The Meetingisin Schema",
+        "items": {
+          "type": "object",
+          "title": "The Items Schema",
+          "required": [
+            "isin",
+            "type",
+            "weight"
+          ],
+          "properties": {
+            "isin": {
+              "type": "object",
+              "title": "The Isin Schema",
+              "required": [
+                "id",
+                "isin"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "title": "The Id Schema"
+                },
+                "isin": {
+                  "type": "string",
+                  "title": "The Isin Schema"
+                }
+              }
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Ordinary",
+                "Preferential"
+              ]
+            },
+            "weight": {
+              "type": "integer",
+              "title": "The Weight Schema",
+              "default": 0
+            }
+          }
+        }
+      },
+      "reviewDate": {
+        "type": "string",
+        "title": "The Reviewdate Schema"
+      },
+      "location": {
+        "type": "string",
+        "title": "The Location Schema"
+      },
+      "meetingFileUrl": {
+        "type": "string",
+        "title": "The Meetingfileurl Schema"
+      },
+      "publishedTime": {
+        "type": "string",
+        "title": "The Publishedtime Schema"
+      },
+      "withdrawnTime": {
+        "type": "null",
+        "title": "The Withdrawntime Schema",
+        "default": null
+      }
+    }
+  }
+}
